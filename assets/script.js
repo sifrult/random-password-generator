@@ -1,9 +1,5 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var numbers = "01234567890";
-var lowerLetters = "abcdefghijklmnopqrstuvwxyz";
-var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
 // Prompts to select password criteria
 document.getElementById("generate").onclick = function() {
@@ -27,11 +23,17 @@ document.getElementById("generate").onclick = function() {
         window.confirm("Invalid entry, please try again.")
         return;
     }
+    if (userLowercase === "yes") {
+        const lower = getRandomLower;
+    }
     var userInputUppercase = window.prompt ("Type 'yes' if you would like to include UPPERCASE letters, type 'no' if you don't want to include them")
     const userUppercase = userInputUppercase.toLowerCase();;
     if (userUppercase !== "no" && userUppercase !== "yes") {
         window.confirm("Invalid entry, please try again.")
         return;
+    }
+    if (userUppercase === "yes") {
+        const upper = getRandomUpper;
     }
     var userInputNumeric = window.prompt ("Type 'yes' if you would like to include NUMBERS, type 'no' if you don't want to include them")
     const userNumeric = userInputNumeric.toLowerCase();;
@@ -39,11 +41,17 @@ document.getElementById("generate").onclick = function() {
         window.confirm("Invalid entry, please try again.")
         return;
     }
+    if (userNumeric === "yes") {
+        const number = getRandomNumber;
+    }
     var userInputSpecialCharacters = window.prompt ("Type 'yes' if you would like to include SPECIAL CHARACTERS, type 'no' if you don't want to include them")
     const userSpecialCharacters = userInputSpecialCharacters.toLowerCase();;
     if (userSpecialCharacters !== "no" && userSpecialCharacters !== "yes") {
         window.confirm("Invalid entry, please try again.")
         return;
+    }
+    if (userSpecialCharacters === "yes") {
+        const symbol = getRandomSymbol;
     }
     if (userLowercase === "no" && userUppercase === "no" && userNumeric === "no" && userSpecialCharacters === "no") {
         window.confirm("You must say 'yes' to at least one character type. Please make your selections again.")
@@ -58,6 +66,23 @@ document.getElementById("generate").onclick = function() {
             "\nSpecial characters: " + userSpecialCharacters
         )
     }
+// Functions responsible to return a random value that will create password
+    function getRandomLower() {
+        return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+    }
+    function getRandomUpper() {
+        return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+    }
+    function getRandomNumber() {
+        return String.fromCharCode(Math.floor(secureMathRandom() * 10) + 48);
+    }
+    function getRandomSymbol() {
+        const symbols = '~!@#$%^&*()_+{}":?><;.,';
+        return symbols[Math.floor(Math.random() * symbols.length)];
+    }
+
+
+
 }
 
 
