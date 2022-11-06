@@ -9,62 +9,70 @@ var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 document.getElementById("generate").onclick = function() {
     window.confirm("Press 'Ok' to begin selecting your password criteria");
 
-    function minChar () {
-        var userInputMinChar = window.prompt ("Enter MINIMUM amount of characters (min of 8)")
-        const userMinChar = userInputMinChar;
-        if (userMinChar < 8 || userMinChar > 128 || isNaN(userInputMinChar) ) {
-            minChar()
-        }
+
+
+    var userInputMinChar = window.prompt ("Enter MINIMUM amount of characters (min of 8)")
+    var userMinChar = userInputMinChar;
+    if (userMinChar < 8 || userMinChar > 128 || isNaN(userInputMinChar) ) {
+        window.confirm("Invalid entry, please try again.")
+        return;
     }
-    minChar();
 
-    function maxChar () {
-        var userInputMaxChar = window.prompt ("Enter MAXIMUM amount of characters (max of 128)")
-        const userMaxChar = userInputMaxChar;
-        if (userMaxChar > 128 || userMaxChar < 8 || isNaN(userInputMaxChar) ) {
-            maxChar()
-        }
+
+
+
+    var userInputMaxChar = window.prompt ("Enter MAXIMUM amount of characters (max of 128)")
+    var userMaxChar = userInputMaxChar;
+    if (userMaxChar > 128 || userMaxChar < 8 || isNaN(userInputMaxChar) ) {
+        window.confirm("Invalid entry, please try again.")
+        return;
     }
-    maxChar();
 
-    function lowerCase () {
-        var userInputLowercase = window.prompt ("Type 'yes' if you would like to include LOWERCASE letters, type 'no' if you don't want to include them")
-        const userLowercase = userInputLowercase;
-        if (userLowercase !== "no" && userLowercase !== "yes") {
-            lowerCase()
-        }
+
+
+
+    var userInputLowercase = window.prompt ("Type 'yes' if you would like to include LOWERCASE letters, type 'no' if you don't want to include them")
+    var userLowercase = userInputLowercase;
+    if (userLowercase !== "no" && userLowercase !== "yes") {
+        window.confirm("Invalid entry, please try again.")
+        return;
     }
-    lowerCase();
 
-    function upperCase () {
-        var userInputUppercase = window.prompt ("Type 'yes' if you would like to include UPPERCASE letters, type 'no' if you don't want to include them")
-        const userUppercase = userInputUppercase;
-        if (userUppercase !== "no" && userUppercase !== "yes") {
-            upperCase()
-        }
+
+
+    var userInputUppercase = window.prompt ("Type 'yes' if you would like to include UPPERCASE letters, type 'no' if you don't want to include them")
+    var userUppercase = userInputUppercase;
+    if (userUppercase !== "no" && userUppercase !== "yes") {
+        window.confirm("Invalid entry, please try again.")
+        return;
     }
-    upperCase();
 
-    function numbers () {
-        var userInputNumeric = window.prompt ("Type 'yes' if you would like to include NUMBERS, type 'no' if you don't want to include them")
-        const userNumeric = userInputNumeric;
-        if (userNumeric !== "no" && userNumeric !== "yes") {
-            numbers()
-        }
+
+
+    var userInputNumeric = window.prompt ("Type 'yes' if you would like to include NUMBERS, type 'no' if you don't want to include them")
+    var userNumeric = userInputNumeric;
+    if (userNumeric !== "no" && userNumeric !== "yes") {
+        window.confirm("Invalid entry, please try again.")
+        return;
     }
-    numbers();
 
-    function characters () {
-        var userInputSpecialCharacters = window.prompt ("Type 'yes' if you would like to include SPECIAL CHARACTERS, type 'no' if you don't want to include them")
-        const userSpecialCharacters = userInputSpecialCharacters;
-        if (userSpecialCharacters !== "no" && userSpecialCharacters !== "yes") {
-            characters()
-        }
+
+
+    var userInputSpecialCharacters = window.prompt ("Type 'yes' if you would like to include SPECIAL CHARACTERS, type 'no' if you don't want to include them")
+    var userSpecialCharacters = userInputSpecialCharacters;
+    if (userSpecialCharacters !== "no" && userSpecialCharacters !== "yes") {
+        window.confirm("Invalid entry, please try again.")
+        return;
     }
-    characters();
 
 
- }
+    if (userLowercase === "no" && userUppercase === "no" && userNumeric === "no" && userSpecialCharacters === "no") {
+        window.confirm("You must say 'yes' to at least one character type. Please make your selections again.")
+        return;
+    }
+
+}
+
 
 
 // Generate password
